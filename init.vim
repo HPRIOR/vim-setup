@@ -1,32 +1,38 @@
 " >> load plugins
 call plug#begin(stdpath('data') . 'vimplug')
+" telescope 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+
+" lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'glepnir/lspsaga.nvim'
+" 
+" auto-complete
     Plug 'hrsh7th/nvim-compe'
+
+" tree-sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
+" bar 
     Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
     Plug 'kyazdani42/nvim-web-devicons'  " needed for galaxyline icons
 
+" theme
     Plug 'NLKNguyen/papercolor-theme'
-    Plug 'nikvdp/neomux'
 
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
 
+" useful command stuff
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
 
-    Plug 'tomtom/tcomment_vim'
 call plug#end()
-
-
 
 colorscheme PaperColor
 
