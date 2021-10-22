@@ -11,10 +11,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'glepnir/lspsaga.nvim'
 
 " auto-complete
-   Plug 'hrsh7th/nvim-compe'
-  "  Plug 'hrsh7th/cmp-nvim-lsp'
-   " Plug 'hrsh7th/cmp-buffer'
-    " Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
 
 " tree-sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -36,6 +35,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive'
 
 call plug#end()
+
+set completeopt=menu,menuone,noselect
 
 colorscheme PaperColor
 
@@ -120,4 +121,5 @@ require("lsp")
 require("treesitter")
 require("statusbar")
 require("completion")
+
 EOF
