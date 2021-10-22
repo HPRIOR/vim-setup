@@ -7,14 +7,11 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " lsp
     Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'kabouzeid/nvim-lspinstall'
     Plug 'glepnir/lspsaga.nvim'
-
+" 
 " auto-complete
-   Plug 'hrsh7th/nvim-compe'
-  "  Plug 'hrsh7th/cmp-nvim-lsp'
-   " Plug 'hrsh7th/cmp-buffer'
-    " Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/nvim-compe'
 
 " tree-sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
