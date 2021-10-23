@@ -2,6 +2,9 @@
   local cmp = require'cmp'
   local luasnip = require'luasnip'
 
+  -- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menu,menuone,noselect'
+
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -51,3 +54,16 @@
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
+
+  require('lspconfig')['rust_analyzer'].setup {
+    capabilities = capabilities
+  }
+
+  require('lspconfig')['vimls'].setup {
+    capabilities = capabilities
+  }
+
+  require('lspconfig')['omnisharp'].setup {
+    capabilities = capabilities
+  }
+

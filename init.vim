@@ -4,7 +4,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-
+    
 " lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
@@ -26,6 +26,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 " theme
     Plug 'NLKNguyen/papercolor-theme'
 
+" misc
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
@@ -34,9 +35,12 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
 
+" snip
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
+
 call plug#end()
 
-set completeopt=menu,menuone,noselect
 
 colorscheme PaperColor
 
@@ -120,6 +124,6 @@ lua <<EOF
 require("lsp")
 require("treesitter")
 require("statusbar")
+-- requires modification when new language server added
 require("completion")
-
 EOF
