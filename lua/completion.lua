@@ -51,26 +51,11 @@ vim.o.completeopt = 'menu,menuone,noselect'
  -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- each server requires to it's capabilites to be setup here
-  require('lspconfig')['tsserver'].setup {
-    capabilities = capabilities
-  }
+  local lsp_config = require('lspconfig')
+  local servers = {'tsserver','rust_analyzer','vimls', 'omnisharp', 'pyright', 'fsautocomplete'}
+  for _, lsp in ipairs(servers) do
+      lsp_config[lsp].setup{
+        capabilities = capabilities
+      }
+  end
 
-  require('lspconfig')['rust_analyzer'].setup {
-    capabilities = capabilities
-  }
-
-  require('lspconfig')['vimls'].setup {
-    capabilities = capabilities
-  }
-
-  require('lspconfig')['omnisharp'].setup {
-    capabilities = capabilities
-  }
-
-  require('lspconfig')['pyright'].setup {
-    capabilities = capabilities
-  }
-
-  require('lspconfig')['fsautocomplete'].setup {
-    capabilities = capabilities
-  }
