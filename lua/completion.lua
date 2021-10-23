@@ -20,6 +20,7 @@ local servers = {
   'cssls',
   'html'
 }
+
 for _, lsp in ipairs(servers) do
   lsp_config[lsp].setup{
     capabilities = capabilities,

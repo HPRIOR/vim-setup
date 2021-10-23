@@ -1,4 +1,4 @@
-" >> load plugins
+">> load plugins
 call plug#begin(stdpath('data') . 'vimplug')
 " telescope 
     Plug 'nvim-lua/plenary.nvim'
@@ -9,6 +9,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'glepnir/lspsaga.nvim'
+
 
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -38,6 +39,11 @@ call plug#begin(stdpath('data') . 'vimplug')
 " snip
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'rafamadriz/friendly-snippets'
+
+" trees
+   Plug 'preservim/nerdtree'
+
 
 call plug#end()
 
@@ -95,9 +101,6 @@ nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
-autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
-
-
 
 " >> setup nerdcomment key bindings
 let g:NERDCreateDefaultMappings = 0
@@ -122,10 +125,15 @@ nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 
+" >> NERDtree map
+nnoremap <leader>t :NERDTreeToggle<CR>
+
+
 lua <<EOF
 require("lsp")
 require("treesitter")
 require("statusbar")
 -- requires modification when new language server added
 require("completion")
+require("luasnip-config")
 EOF
