@@ -52,7 +52,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- each server requires to it's capabilites to be setup here
   local lsp_config = require('lspconfig')
-  local servers = {'tsserver','rust_analyzer','vimls', 'omnisharp', 'pyright', 'dockerls'}
+  local servers = {'tsserver','rust_analyzer','vimls', 'omnisharp', 'pyright', 'dockerls', 'bashls'}
   for _, lsp in ipairs(servers) do
       lsp_config[lsp].setup{
         capabilities = capabilities
