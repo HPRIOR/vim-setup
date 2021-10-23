@@ -1,14 +1,43 @@
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
-  local luasnip = require'luasnip'
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+local luasnip = require'luasnip'
 
-  -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
+-- Setup lspconfig.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-  cmp.setup({
+-- each server requires to it's capabilites to be setup here
+local lsp_config = require('lspconfig')
+local servers = {
+  'tsserver',
+  'rust_analyzer',
+  'vimls',
+  'omnisharp',
+  'pyright',
+  'dockerls',
+  'bashls',
+  'graphql',
+  'cssls',
+  'html'
+}
+for _, lsp in ipairs(servers) do
+  lsp_config[lsp].setup{
+    capabilities = capabilities,
+  }
+end
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+cmp.setup({
     snippet = {
       expand = function(args)
-         luasnip.lsp_expand(args.body) -- For `luasnip` users.
+         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     mapping = {
@@ -20,16 +49,19 @@ vim.o.completeopt = 'menu,menuone,noselect'
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-      ['<Tab>'] = function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
-    end,
-    ['<S-Tab>'] = function(fallback)
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -37,8 +69,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
       else
         fallback()
       end
-    end,
-
+    end, { "i", "s" }),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -46,16 +77,5 @@ vim.o.completeopt = 'menu,menuone,noselect'
     }, {
       { name = 'buffer' },
     })
-  })
-
- -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- each server requires to it's capabilites to be setup here
-  local lsp_config = require('lspconfig')
-  local servers = {'tsserver','rust_analyzer','vimls', 'omnisharp', 'pyright', 'dockerls', 'bashls'}
-  for _, lsp in ipairs(servers) do
-      lsp_config[lsp].setup{
-        capabilities = capabilities
-      }
-  end
+})
 
