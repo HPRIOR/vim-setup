@@ -95,6 +95,9 @@ nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
+autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
+
+
 
 " >> setup nerdcomment key bindings
 let g:NERDCreateDefaultMappings = 0

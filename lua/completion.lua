@@ -67,3 +67,10 @@ vim.o.completeopt = 'menu,menuone,noselect'
     capabilities = capabilities
   }
 
+  require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+  }
+
+  require('lspconfig')['fsautocomplete'].setup {
+    capabilities = capabilities
+  }
