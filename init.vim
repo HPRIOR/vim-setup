@@ -31,6 +31,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
+    Plug 'chun-yang/auto-pairs'
 
 " useful command stuff
     Plug 'tpope/vim-eunuch'
