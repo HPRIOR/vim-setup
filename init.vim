@@ -10,7 +10,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'glepnir/lspsaga.nvim'
 
-
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
@@ -71,9 +70,10 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 set autoindent
 set mouse=a  " mouse support
 
+" >> KEY BINDINGS <<
 
 " set leader key to ,
-let g:mapleader=","
+let g:mapleader=" "
 
 " >> Telescope bindings
 nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
@@ -122,14 +122,21 @@ nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
-xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
+nnoremap <silent> gn    <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent> gp    <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 
 " >> NERDtree map
 nnoremap <leader>t :NERDTreeToggle<CR>
 
+" >> window movement 
+nnoremap <leader>h <c-w>h
+nnoremap <leader>l <c-w>l
+nnoremap <leader>k <c-w>k
+nnoremap <leader>j <c-w>j
 
+
+" >> LUA SCRIPTS <<
+nmap <leader>h <c-w>h
 lua <<EOF
 require("lsp")
 require("treesitter")
