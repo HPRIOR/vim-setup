@@ -136,9 +136,9 @@ nnoremap <leader>j <c-w>j
 
 " >> tabs 
 " next-tab
-nmap  <s-k> gt 
+nmap  <leader>k gt 
 "prev-tab
-nmap  <s-j>] gT
+nmap  <leader>j gT
 
 " >> LUA SCRIPTS <<
 nmap <leader>h <c-w>h
