@@ -41,12 +41,31 @@ vim.lsp.protocol.CompletionItemKind = {
     "   (Operator)",
     "   (TypeParameter)"
 }
-
 local lsp_installer = require("nvim-lsp-installer")
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lsp_installer.on_server_ready(function(server)
     local opts = {}
-
+    opts.capabilities = capabilities
+--    if server.name == "tsserver" then
+--        opts.capabilities = capabilities
+--    end
+--
+--    if server.name == "rust_analyzer" then
+--        opts.capabilities = capabilities
+--    end
+--
+--    if server.name == "vimls" then
+--        opts.capabilities = capabilities
+--    end
+--
+--    if server.name == "omnisharp" then
+--        opts.capabilities = capabilities
+--    end
+--
+--    if server.name == "pyright" then
+--        opts.capabilities = capabilities
+--    end
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)

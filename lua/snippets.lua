@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+               local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -7,8 +7,9 @@ local i = ls.insert_node
 local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
+local r = ls.restore_node
 local l = require("luasnip.extras").lambda
-local r = require("luasnip.extras").rep
+local rep = require("luasnip.extras").rep
 local p = require("luasnip.extras").partial
 local m = require("luasnip.extras").match
 local n = require("luasnip.extras").nonempty
@@ -16,7 +17,7 @@ local dl = require("luasnip.extras").dynamic_lambda
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
-local conds = require("luasnip.extras.conditions")
+local conds = require("luasnip.extras.expand_conditions")
 
 -- Every unspecified option will be set to the default.
 ls.config.set_config({
@@ -58,6 +59,9 @@ end
 
 -- complicated function for dynamicNode.
 local function jdocsnip(args, _, old_state)
+	-- !!! old_state is used to preserve user-input here. DON'T DO IT THAT WAY!
+	-- Using a restoreNode instead is much easier.
+	-- View this only as an example on how old_state functions.
 	local nodes = {
 		t({ "/**", " * " }),
 		i(1, "A short Description"),
@@ -200,12 +204,15 @@ ls.snippets = {
 				-- Inside Choices, Nodes don't need a position as the choice node is the one being jumped to.
 				sn(nil, {
 					t("extends "),
-					i(1),
+					-- restoreNode: stores and restores nodes.
+					-- pass position, store-key and nodes.
+					r(1, "other_class", i(1)),
 					t(" {"),
 				}),
 				sn(nil, {
 					t("implements "),
-					i(1),
+					-- no need to define the nodes for a given key a second time.
+					r(1, "other_class"),
 					t(" {"),
 				}),
 			}),
@@ -246,7 +253,7 @@ ls.snippets = {
 				return line_to_cursor:match("%s*//")
 			end,
 		}),
-		-- there's some built-in conditions in "luasnip.extras.conditions".
+		-- there's some built-in conditions in "luasnip.extras.expand_conditions".
 		s("cond2", {
 			t("will only expand at the beginning of the line"),
 		}, {
@@ -309,7 +316,7 @@ ls.snippets = {
 			i(0),
 		}),
 		-- Shorthand for repeating the text in a given node.
-		s("repeat", { i(1, "text"), t({ "", "" }), r(1) }),
+		s("repeat", { i(1, "text"), t({ "", "" }), rep(1) }),
 		-- Directly insert the ouput from a function evaluated at runtime.
 		s("part", p(os.date, "%Y")),
 		-- use matchNodes to insert text based on a pattern/function/lambda-evaluation.
@@ -391,9 +398,9 @@ ls.snippets = {
 			]],
 				{
 					i(1, "x"),
-					r(1),
+					rep(1),
 					i(2, "y"),
-					r(2),
+					rep(2),
 				}
 			)
 		),
@@ -408,7 +415,10 @@ ls.snippets = {
 			})
 		),
 		-- The delimiters can be changed from the default `{}` to something else.
-		s("fmt4", fmt("foo() { return []; }", i(1, "x"), { delimiters = "[]" })),
+		s(
+			"fmt4",
+			fmt("foo() { return []; }", i(1, "x"), { delimiters = "[]" })
+		),
 		-- `fmta` is a convenient wrapper that uses `<>` instead of `{}`.
 		s("fmt5", fmta("foo() { return <>; }", i(1, "x"))),
 		-- By default all args must be used. Use strict=false to disable the check
