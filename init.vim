@@ -39,16 +39,16 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive'
     
 " snippets
- Plug 'L3MON4D3/LuaSnip'
- Plug 'saadparwaiz1/cmp_luasnip'
- Plug 'rafamadriz/friendly-snippets'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'rafamadriz/friendly-snippets'
 
-
-" trees
-   Plug 'preservim/nerdtree'
-   Plug 'Xuyuanp/nerdtree-git-plugin'
-
-
+" nerdtree
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'scrooloose/nerdtree-project-plugin'
+    Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -72,6 +72,7 @@ set shiftwidth=4
 set hlsearch
 set virtualedit=all
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set encoding=utf8 " for nerdtree fonts
 set autoindent
 set mouse=a  " mouse support
 
@@ -90,36 +91,27 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 " >> KEY BINDINGS <<
 " >> Telescope bindings
 nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
-
 " most recently used files
 nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
-
 " find buffer
 nnoremap <Leader>; <cmd>lua require'telescope.builtin'.buffers{}<CR>
-
 " find in current buffer
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
-
 " bookmarks
 nnoremap <Leader>' <cmd>lua require'telescope.builtin'.marks{}<CR>
-
 " git files
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
-
 " all files
 nnoremap <Leader>bfs <cmd>lua require'telescope.builtin'.find_files{}<CR>
-
 " ripgrep like grep through dir
 nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
-
-
-
 xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 
+" refresh vim 
+noremap <leader>sv :source $MYVIMRC<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -149,8 +141,6 @@ nnoremap <leader>j <c-w>j
 nmap  <leader>] gt 
 "prev-tab
 nmap  <leader>[ gT
-
-" autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
 
 " >> LUA SCRIPTS <<
 lua <<EOF
