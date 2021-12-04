@@ -47,7 +47,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'scrooloose/nerdtree-project-plugin'
+    Plug 'PhilRunninger/nerdtree-visual-selection'
     Plug 'preservim/nerdtree'
 
 call plug#end()
@@ -110,8 +110,6 @@ nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 
-" refresh vim 
-noremap <leader>sv :source $MYVIMRC<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -135,6 +133,9 @@ nnoremap <leader>h <c-w>h
 nnoremap <leader>l <c-w>l
 nnoremap <leader>k <c-w>k
 nnoremap <leader>j <c-w>j
+
+" >> close windows
+nnoremap <leader>q :q<CR>
 
 " >> tabs 
 " next-tab
