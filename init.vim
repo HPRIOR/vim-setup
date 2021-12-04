@@ -1,10 +1,10 @@
-">> load plugins
+"> load plugins
 call plug#begin(stdpath('data') . 'vimplug')
 " telescope 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    
+    Plug 'kyazdani42/nvim-web-devicons'
 " lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
@@ -13,6 +13,8 @@ call plug#begin(stdpath('data') . 'vimplug')
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
 
 " tree-sitter
@@ -35,14 +37,17 @@ call plug#begin(stdpath('data') . 'vimplug')
 " useful command stuff
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
+    
+" snippets
+ Plug 'L3MON4D3/LuaSnip'
+ Plug 'saadparwaiz1/cmp_luasnip'
+ Plug 'rafamadriz/friendly-snippets'
 
-" snip
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'rafamadriz/friendly-snippets'
 
 " trees
    Plug 'preservim/nerdtree'
+   Plug 'Xuyuanp/nerdtree-git-plugin'
+
 
 
 call plug#end()
@@ -82,7 +87,7 @@ nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
 nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
 
 " find buffer
-nnoremap ; <cmd>lua require'telescope.builtin'.buffers{}<CR>
+nnoremap <Leader>; <cmd>lua require'telescope.builtin'.buffers{}<CR>
 
 " find in current buffer
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
@@ -123,7 +128,7 @@ nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> gn    <cmd>lua require('lspsaga.rename').rename()<CR>
-nnoremap <silent> gp    <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+nnoremap <silent> gp    <cmd>lua require('lspsaga.provider').preview_definition()<CR>
 
 " >> NERDtree map
 nnoremap <leader>t :NERDTreeToggle<CR>
@@ -136,17 +141,18 @@ nnoremap <leader>j <c-w>j
 
 " >> tabs 
 " next-tab
-nmap  <leader>k gt 
+nmap  <leader>] gt 
 "prev-tab
-nmap  <leader>j gT
+nmap  <leader>[ gT
+
+" autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
 
 " >> LUA SCRIPTS <<
-nmap <leader>h <c-w>h
 lua <<EOF
+require("completion")
 require("lsp")
 require("treesitter")
 require("statusbar")
 -- requires modification when new language server added
-require("completion")
-require("luasnip-config")
+require('snippets')
 EOF
