@@ -1,6 +1,7 @@
  -- Setup nvim-cmp.
   local cmp = require'cmp'
   local luasnip = require("luasnip")
+  local lspkind = require("lspkind")
 
   -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
@@ -37,14 +38,16 @@ vim.o.completeopt = 'menu,menuone,noselect'
         fallback()
       end
     end,
-
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'buffer' },
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'path' },
-      {name = 'cmdline'}
-    })
+      { name = 'cmdline'}
+    }),
+    formatting = {
+        format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+      }
   })
 

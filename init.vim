@@ -8,7 +8,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 " lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
-    Plug 'glepnir/lspsaga.nvim'
+    Plug 'onsails/lspkind-nvim'
 
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -86,8 +86,7 @@ let g:NERDSpaceDelims = 1
 " >> use nerd fonts in git status
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 " you should install nerdfonts by yourself. default: 0
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+let g:NERDTreeMinimalUI = 1
 
  
 
@@ -116,7 +115,6 @@ nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -125,8 +123,8 @@ nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gn    <cmd>lua require('lspsaga.rename').rename()<CR>
-nnoremap <silent> gp    <cmd>lua require('lspsaga.provider').preview_definition()<CR>
+nnoremap <silent> <leader>r    <cmd>lua vim.lsp.buf.rename()<CR>
+
 
 " >> NERDtree map
 nnoremap <leader>t :NERDTreeToggle<CR>
