@@ -86,6 +86,9 @@ let g:NERDSpaceDelims = 1
 " >> use nerd fonts in git status
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 " you should install nerdfonts by yourself. default: 0
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
  
 
 " >> KEY BINDINGS <<
@@ -142,6 +145,9 @@ nnoremap <leader>q :q<CR>
 nmap  <leader>] gt 
 "prev-tab
 nmap  <leader>[ gT
+
+" >> AutoCmd <<
+
 
 " >> LUA SCRIPTS <<
 lua <<EOF
