@@ -75,11 +75,19 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 set autoindent
 set mouse=a  " mouse support
 
-" >> KEY BINDINGS <<
 
+" >> Configurations << (?)
 " set leader key to ,
 let g:mapleader=" "
+" >> setup nerdcomment key bindings
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+" >> use nerd fonts in git status
+let g:NERDTreeGitStatusUseNerdFonts = 1 
+" you should install nerdfonts by yourself. default: 0
+ 
 
+" >> KEY BINDINGS <<
 " >> Telescope bindings
 nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
 
@@ -108,9 +116,6 @@ nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
 
-" >> setup nerdcomment key bindings
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
 
 xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
