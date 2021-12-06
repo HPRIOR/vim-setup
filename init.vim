@@ -55,6 +55,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'PhilRunninger/nerdtree-visual-selection'
     Plug 'preservim/nerdtree'
 
+" diagnostics
+    Plug 'folke/trouble.nvim'
+
+
 call plug#end()
 
 
@@ -136,17 +140,13 @@ nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
 " completion
 nnoremap <silent> <leader>co    <cmd>lua vim.lsp.buf.completion()<CR>
 
-" document highlight
-" document symbol
-" publish diagnostics
-" range formatting
-" type definition 
-" log messages
-" show message
-" show message request
-" apply edit
-" symbol
-
+" diagnostics
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 " >> NERDtree map
 nnoremap <leader>t :NERDTreeToggle<CR>

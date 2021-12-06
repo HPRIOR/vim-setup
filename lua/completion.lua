@@ -5,7 +5,8 @@
 
   -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
-  cmp.setup({
+
+cmp.setup({
     snippet = {
       expand = function(args)
           luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -48,6 +49,9 @@ vim.o.completeopt = 'menu,menuone,noselect'
     }),
     formatting = {
         format = lspkind.cmp_format({with_text = false, maxwidth = 50})
-      }
+    },
+    experimental = {
+        ghost_text = true
+    }
   })
 
