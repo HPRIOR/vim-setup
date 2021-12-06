@@ -31,6 +31,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " theme
     Plug 'NLKNguyen/papercolor-theme'
+    Plug 'folke/lsp-colors.nvim'
 
 " misc
     Plug 'tpope/vim-ragtag'
@@ -79,7 +80,7 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 set encoding=utf8 " for nerdtree fonts
 set autoindent
 set mouse=a  " mouse support
-
+set clipboard+=unnamedplus
 
 " >> Configurations << (?)
 " set leader key to ,
@@ -111,8 +112,6 @@ nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <Leader>bfs <cmd>lua require'telescope.builtin'.find_files{}<CR>
 " ripgrep like grep through dir
 nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-" pick color scheme
-nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
 " >> Lsp key bindings
 " definition
