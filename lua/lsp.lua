@@ -44,28 +44,16 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_installer = require("nvim-lsp-installer")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local on_attach_all = function (_, _)
+    -- add signiture help from lsp_signature
+    require("lsp_signature").on_attach()
+ end
+
 lsp_installer.on_server_ready(function(server)
     local opts = {}
     opts.capabilities = capabilities
---    if server.name == "tsserver" then
---        opts.capabilities = capabilities
---    end
---
---    if server.name == "rust_analyzer" then
---        opts.capabilities = capabilities
---    end
---
---    if server.name == "vimls" then
---        opts.capabilities = capabilities
---    end
---
---    if server.name == "omnisharp" then
---        opts.capabilities = capabilities
---    end
---
---    if server.name == "pyright" then
---        opts.capabilities = capabilities
---    end
+    opts.on_attach = on_attach_all
+
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)

@@ -5,6 +5,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
+   
 " lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
@@ -16,6 +17,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+
+" signiture help
+    Plug 'ray-x/lsp_signature.nvim'
 
 " tree-sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -109,21 +113,40 @@ nnoremap <Leader>bfs <cmd>lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
-xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
-nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
-
 
 " >> Lsp key bindings
+" definition
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+"declaration
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+"references
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+"implementation
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K     <cmd>Lspsaga hover_doc<CR>
+"signiture help
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
+"formatting
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
+"rename
 nnoremap <silent> <leader>r    <cmd>lua vim.lsp.buf.rename()<CR>
+"hover <- information on hover
+nnoremap <silent> K    <cmd>lua vim.lsp.buf.hover()<CR>
+"code action
+nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+" completion
+nnoremap <silent> <leader>co    <cmd>lua vim.lsp.buf.completion()<CR>
+
+" document highlight
+" document symbol
+" publish diagnostics
+" range formatting
+" type definition 
+" log messages
+" show message
+" show message request
+" apply edit
+" symbol
 
 
 " >> NERDtree map
@@ -153,6 +176,5 @@ require("completion")
 require("lsp")
 require("treesitter")
 require("statusbar")
--- requires modification when new language server added
 require('snippets')
 EOF
