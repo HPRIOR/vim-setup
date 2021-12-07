@@ -24,6 +24,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 " tree-sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'lewis6991/spellsitter.nvim'
 
 " bar 
     Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
@@ -176,4 +177,5 @@ require("lsp")
 require("treesitter")
 require("statusbar")
 require('snippets')
+require('spellcheck')
 EOF
