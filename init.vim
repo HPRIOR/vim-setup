@@ -10,6 +10,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'onsails/lspkind-nvim'
+    Plug 'kosayoda/nvim-lightbulb'
 
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -168,6 +169,8 @@ nmap  <leader>] gt
 nmap  <leader>[ gT
 
 " >> AutoCmd <<
+autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
+
 
 
 " >> LUA SCRIPTS <<
