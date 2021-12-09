@@ -169,7 +169,7 @@ nmap  <leader>] gt
 nmap  <leader>[ gT
 
 " >> AutoCmd <<
-autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
+" autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
 
 
 
