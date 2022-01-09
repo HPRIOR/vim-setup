@@ -72,7 +72,6 @@ call plug#begin(stdpath('data') . 'vimplug')
 " comments
     Plug 'numToStr/Comment.nvim'
  
-
 call plug#end()
 
 
