@@ -55,5 +55,11 @@ require('nvim-tree').setup {
   trash = {
     cmd = "trash",
     require_confirm = true
-  }
+  },
+  open_hook = function ()
+      require'tree-barbar'.open()
+  end,
+  close_hook = function ()
+      require'tree-barbar'.close()
+  end
 }

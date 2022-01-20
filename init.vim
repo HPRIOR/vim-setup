@@ -58,7 +58,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-web-devicons'
 
 " filetree
-    Plug 'kyazdani42/nvim-tree.lua' 
+    Plug 'HPRIOR/nvim-tree.lua' 
 
 " diagnostics
     Plug 'folke/trouble.nvim'
@@ -156,7 +156,7 @@ nnoremap <silent>       <leader>9 :BufferLast<CR>
 nnoremap <silent>       <leader>]  :BufferNext<CR>
 nnoremap <silent>       <leader>[  :BufferPrevious<CR>
 nnoremap <silent>       <leader>w  :BufferClose<CR>
-nnoremap <silent>       <leader>t  <cmd>lua require('tree-barbar').toggle()<CR> " file tree toggle 
+nnoremap <silent>       <leader>t  :NvimTreeToggle<CR>
 
 " Diff
 nnoremap <silent> <leader>vh <cmd>DiffviewFileHistory<CR>

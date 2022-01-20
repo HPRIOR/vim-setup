@@ -1,18 +1,13 @@
--- used to move tabs over when opening tree
-local tree = {}
-
-local isOpen = true
-
-tree.toggle = function ()
-    if isOpen then
-        require'bufferline.state'.set_offset(30, 'FileTree')
-        isOpen = not isOpen
-    else
-        require'bufferline.state'.set_offset(0)
-        isOpen = not isOpen
-    end
-    require'nvim-tree'.toggle()
+local tree ={}
+tree.open = function ()
+   require'bufferline.state'.set_offset(30, 'FileTree')
+   require'nvim-tree'.find_file(true)
 end
 
+tree.close = function ()
+   require'bufferline.state'.set_offset(0)
+   require'nvim-tree'.close()
+end
 return tree
+
 
