@@ -166,6 +166,7 @@ nnoremap <silent> <leader>vc <cmd>DiffviewClose<CR>
 " Misc
 nnoremap <silent> <leader>nh <cmd>:noh<CR> " remove highlights
 vnoremap p "_dP
+vmap <C-p> y'>p " copy text below vs
 
 " >> LUA SCRIPTS <<
 lua <<EOF
