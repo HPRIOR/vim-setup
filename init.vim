@@ -58,7 +58,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-web-devicons'
 
 " filetree
-    Plug 'HPRIOR/nvim-tree.lua' 
+Plug 'HPRIOR/nvim-tree.lua' 
 
 " diagnostics
     Plug 'folke/trouble.nvim'
