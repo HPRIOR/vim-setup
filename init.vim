@@ -58,7 +58,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-web-devicons'
 
 " filetree
-Plug 'HPRIOR/nvim-tree.lua' 
+    Plug 'HPRIOR/nvim-tree.lua' 
 
 " diagnostics
     Plug 'folke/trouble.nvim'
@@ -114,7 +114,8 @@ nnoremap <Leader>/         <cmd>lua require'telescope.builtin'.current_buffer_fu
 nnoremap <Leader>'         <cmd>lua require'telescope.builtin'.marks{}<CR>
 nnoremap <Leader>gf        <cmd>lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <Leader>f         <cmd>lua require'telescope.builtin'.find_files{}<CR>
-nnoremap <Leader>b         <cmd>lua require'telescope.builtin'.file_browser{}<CR>
+nnoremap <Leader>gg        <cmd>lua require'telescope.builtin'.live_grep{}<CR>
+
 
 " >> Lsp key bindings
 nnoremap <silent> gd            <cmd>lua vim.lsp.buf.definition()<CR>
@@ -129,7 +130,7 @@ nnoremap <silent> <leader>r     <cmd>Lspsaga rename<CR>
 nnoremap <silent> K             <cmd>Lspsaga hover_doc<CR>
 "TODO map this to alt enter
 nnoremap <silent> <leader>a     <cmd>Lspsaga code_action<CR> 
-nnoremap <silent> <leader>d      <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
+nnoremap <silent> <leader>d     <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
 
 " diagnostics
 nnoremap <silent> <leader>xx         <cmd>TroubleToggle<cr>
