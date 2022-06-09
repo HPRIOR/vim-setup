@@ -56,10 +56,16 @@ require('nvim-tree').setup {
     cmd = "trash",
     require_confirm = true
   },
-  open_hook = function ()
-      require'tree-barbar'.open()
-  end,
-  close_hook = function ()
-      require'tree-barbar'.close()
-  end
 }
+
+local events = require('nvim-tree.events')
+events.on_tree_open(function ()
+      require'tree-barbar'.open()
+  end)
+
+events.on_tree_close(function ()
+      require'tree-barbar'.close()
+  end)
+
+
+
