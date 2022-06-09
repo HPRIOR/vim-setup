@@ -4,7 +4,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-
+    
 " lsp
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
@@ -16,9 +16,9 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
+    "Plug 'hrsh7th/cmp-buffer' " similar words in buffer
+    Plug 'hrsh7th/cmp-path'    " auto find path
+    Plug 'hrsh7th/cmp-cmdline' " 
     Plug 'hrsh7th/nvim-cmp'
 
 " signiture help
@@ -31,9 +31,10 @@ call plug#begin(stdpath('data') . 'vimplug')
 " bar 
     Plug 'NTBBloodbath/galaxyline.nvim', { 'branch': 'main' }
 
+
 " theme/ui
     Plug 'ellisonleao/gruvbox.nvim' 
-    Plug 'folke/lsp-colors.nvim'
+    Plug 'folke/lsp-colors.nvim' 
     Plug 'danilamihailov/beacon.nvim'
     Plug 'romgrk/barbar.nvim'
     Plug 'RRethy/vim-illuminate'
@@ -106,6 +107,12 @@ set termguicolors
 " >> Configurations << (?)
 " set leader key to ,
 let g:mapleader=" "
+
+sign define DiagnosticSignError text= texthl=TextError linehl= numhl=
+sign define DiagnosticSignWarn  text= texthl=TextWarn  linehl= numhl=
+sign define DiagnosticSignInfo  text= texthl=TextInfo  linehl= numhl=
+sign define DiagnosticSignHint  text= texthl=TextHint  linehl= numhl=
+
 
 " >> KEY BINDINGS <<
 " >> Telescope bindings

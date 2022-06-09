@@ -1,7 +1,7 @@
 local lspsaga = require 'lspsaga'
 lspsaga.setup { -- defaults ...
   debug = false,
-  use_saga_diagnostic_sign = true,
+  use_saga_diagnostic_sign = false,
   -- diagnostic sign
   error_sign = " ",
   warn_sign = " ",
@@ -14,7 +14,7 @@ lspsaga.setup { -- defaults ...
     enable = true,
     sign = true,
     sign_priority = 40,
-    virtual_text = true,
+    virtual_text = false,
   },
   finder_definition_icon = "  ",
   finder_reference_icon = "  ",
