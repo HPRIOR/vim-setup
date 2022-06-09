@@ -30,8 +30,9 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " bar 
     Plug 'NTBBloodbath/galaxyline.nvim', { 'branch': 'main' }
+
 " theme/ui
-    Plug 'Mofiqul/vscode.nvim'
+    Plug 'ellisonleao/gruvbox.nvim' 
     Plug 'folke/lsp-colors.nvim'
     Plug 'danilamihailov/beacon.nvim'
     Plug 'romgrk/barbar.nvim'
@@ -59,6 +60,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " filetree
     Plug 'kyazdani42/nvim-tree.lua'
+
 " diagnostics
     Plug 'folke/trouble.nvim'
 
@@ -74,8 +76,8 @@ call plug#begin(stdpath('data') . 'vimplug')
 call plug#end()
 
 
-let g:vscode_style = "dark"
-colorscheme vscode
+set background=dark
+colorscheme gruvbox
 
 " basic settings
 syntax on
@@ -171,10 +173,11 @@ vmap <C-p> y'>p " copy text below vs
 " >> LUA SCRIPTS <<
 lua <<EOF
 require("completion")
+require("lsp-sig")
 require("lsp")
 require("statusbar")
 require("treesitter")
-require('autopair-config')
+require("autopair-config")
 require('comment-config')
 require('diffview-config')
 require('filetree')

@@ -1,4 +1,4 @@
--- lsp setup
+-- lsp setuplsp
 -- Set Default Prefix.
 -- Note: You can set a prefix per lsp server in the lv-globals.lua file
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -44,7 +44,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 local on_attach_all = function (client, _)
     -- add signiture help from lsp_signature
-    require("lsp_signature").on_attach()
+    -- require("lsp_signature").on_attach()
     require('illuminate').on_attach(client)
  end
 
