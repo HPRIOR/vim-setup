@@ -120,9 +120,9 @@ nnoremap <Leader>`         <cmd>lua require'telescope.builtin'.builtin{}<CR>
 nnoremap <Leader>;         <cmd>lua require'telescope.builtin'.buffers{}<CR>
 nnoremap <Leader>/         <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 nnoremap <Leader>'         <cmd>lua require'telescope.builtin'.marks{}<CR>
-nnoremap <Leader>gf        <cmd>lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <Leader>G        <cmd>lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <Leader>f         <cmd>lua require'telescope.builtin'.find_files{}<CR>
-nnoremap <Leader>gg        <cmd>lua require'telescope.builtin'.live_grep{}<CR>
+nnoremap <Leader>g        <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 
 
 " >> Lsp key bindings
@@ -194,4 +194,5 @@ require('snippets')
 require('spellcheck')
 require('tree-barbar')
 require('auto-tag-config')
+
 EOF
