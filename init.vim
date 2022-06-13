@@ -73,6 +73,9 @@ call plug#begin(stdpath('data') . 'vimplug')
 
 " comments
     Plug 'numToStr/Comment.nvim'
+
+" ranger
+    Plug 'kevinhwang91/rnvimr'
  
 call plug#end()
 
