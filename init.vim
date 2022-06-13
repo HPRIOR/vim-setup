@@ -75,6 +75,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'numToStr/Comment.nvim'
 
 " ranger
+    " setup requires external deps 
+    " MacOS: pip3 install ranger-fm pynvim
+    " Arch: yay -S ranger python-pynvim ueberzug
     Plug 'kevinhwang91/rnvimr'
  
 call plug#end()
