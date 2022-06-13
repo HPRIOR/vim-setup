@@ -12,7 +12,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tami5/lspsaga.nvim'
 
 " fsharp support
-    Plug 'ionide/Ionide-vim', { 'do':  'make fsautocomplete'}
+    "Plug 'ionide/Ionide-vim', { 'do':  'make fsautocomplete'}
 
 " auto-complete
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -182,6 +182,9 @@ nnoremap <silent> <leader>vc <cmd>DiffviewClose<CR>
 nnoremap <silent> <leader>nh <cmd>:noh<CR> " remove highlights
 vnoremap p "_dP
 vmap <C-p> y'>p " copy text below vs
+
+" ranger integration
+noremap <silent> <leader>R :RnvimrToggle<CR>
 
 " >> LUA SCRIPTS <<
 lua <<EOF
