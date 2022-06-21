@@ -74,6 +74,9 @@ call plug#begin(stdpath('data') . 'vimplug')
 " comments
     Plug 'numToStr/Comment.nvim'
 
+" fancy notifications
+    Plug 'rcarriga/nvim-notify'
+
 " ranger
     " setup requires external deps 
     " MacOS: pip3 install ranger-fm pynvim
@@ -113,6 +116,7 @@ set termguicolors
 " >> Configurations << (?)
 " set leader key to ,
 let g:mapleader=" "
+
 
 sign define DiagnosticSignError text= texthl=TextError linehl= numhl=
 sign define DiagnosticSignWarn  text= texthl=TextWarn  linehl= numhl=
@@ -183,8 +187,12 @@ nnoremap <silent> <leader>nh <cmd>:noh<CR> " remove highlights
 vnoremap p "_dP
 vmap <C-p> y'>p " copy text below vs
 
+" ranger
+nnoremap <silent> <leader>R :RnvimrToggle<CR>
+
 " >> LUA SCRIPTS <<
 lua <<EOF
+vim.notify = require("notify")
 require("completion")
 require("lsp-sig")
 require("lsp")
