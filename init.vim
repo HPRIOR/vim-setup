@@ -187,9 +187,6 @@ nnoremap <silent> <leader>nh <cmd>:noh<CR> " remove highlights
 vnoremap p "_dP
 vmap <C-p> y'>p " copy text below vs
 
-" ranger
-nnoremap <silent> <leader>R :RnvimrToggle<CR>
-
 " ranger integration
 noremap <silent> <leader>R :RnvimrToggle<CR>
 
