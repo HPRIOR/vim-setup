@@ -10,6 +10,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'onsails/lspkind-nvim'
     Plug 'tami5/lspsaga.nvim'
+    Plug 'stevearc/aerial.nvim'
 
 " fsharp support
     "Plug 'ionide/Ionide-vim', { 'do':  'make fsautocomplete'}
@@ -176,6 +177,7 @@ nnoremap <silent>       <leader>]  :BufferNext<CR>
 nnoremap <silent>       <leader>[  :BufferPrevious<CR>
 nnoremap <silent>       <leader>w  :BufferClose<CR>
 nnoremap <silent>       <leader>t  :NvimTreeToggle<CR>
+nnoremap <silent>       <leader>A  :AerialToggle<CR>
 
 " Diff
 nnoremap <silent> <leader>vh <cmd>DiffviewFileHistory<CR>
@@ -208,5 +210,6 @@ require('snippets')
 require('spellcheck')
 require('tree-barbar')
 require('auto-tag-config')
+require('aerial-config')
 
 EOF
