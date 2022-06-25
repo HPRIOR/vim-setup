@@ -83,6 +83,13 @@ call plug#begin(stdpath('data') . 'vimplug')
     " MacOS: pip3 install ranger-fm pynvim
     " Arch: yay -S ranger python-pynvim ueberzug
     Plug 'kevinhwang91/rnvimr'
+    
+" closure REPL
+    Plug 'Olical/conjure'
+    Plug 'tpope/vim-dispatch'
+    Plug 'clojure-vim/vim-jack-in'
+    " use :Lein to start repl
+    Plug 'radenling/vim-dispatch-neovim'
  
 call plug#end()
 
@@ -117,6 +124,7 @@ set termguicolors
 " >> Configurations << (?)
 " set leader key to ,
 let g:mapleader=" "
+let g:maplocalleader=" "
 
 
 sign define DiagnosticSignError text= texthl=TextError linehl= numhl=
