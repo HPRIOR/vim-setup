@@ -2,11 +2,13 @@
 call plug#begin(stdpath('data') . 'vimplug')
 " telescope 
     Plug 'nvim-lua/plenary.nvim'
+
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     
 " lsp
     Plug 'neovim/nvim-lspconfig'
+
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'onsails/lspkind-nvim'
     Plug 'tami5/lspsaga.nvim'
