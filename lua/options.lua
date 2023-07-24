@@ -1,5 +1,4 @@
 local M = {}
-
 local opt = vim.opt
 M.set_options = function()
 	opt.autowrite = true -- Enable auto write

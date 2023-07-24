@@ -45,6 +45,8 @@ return {
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local mason_lsp_config = require("mason-lspconfig")
+			-- for winbar lsp help
+			local navic = require("nvim-navic")
 
 			local handlers = {
 				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
@@ -58,7 +60,10 @@ return {
 				require("cmp_nvim_lsp").default_capabilities()
 			)
 
-			local lsp_attach = function(_, bufnr)
+			local lsp_attach = function(client, bufnr)
+				if client.server_capabilities.documentSymbolProvider then
+					navic.attach(client, bufnr)
+				end
 				keymap.bind_lsp(bufnr)
 			end
 

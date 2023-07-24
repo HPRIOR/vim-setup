@@ -82,4 +82,46 @@ return {
 			end,
 		},
 	},
+	{
+		"fgheng/winbar.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = true,
+		opts = {
+			enabled = true,
+			show_file_path = true,
+			show_symbols = true,
+
+			exclude_filetype = {
+				"help",
+				"startify",
+				"dashboard",
+				"packer",
+				"neogitstatus",
+				"NvimTree",
+				"Trouble",
+				"alpha",
+				"lir",
+				"Outline",
+				"spectre_panel",
+				"toggleterm",
+				"qf",
+			},
+		},
+	},
+	{
+		"SmiteshP/nvim-navic",
+		lazy = true,
+		init = function()
+			vim.g.navic_silence = true
+		end,
+		opts = function()
+			return {
+				separator = " ",
+				highlight = true,
+				depth_limit = 5,
+			}
+		end,
+	},
 }
