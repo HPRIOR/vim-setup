@@ -94,28 +94,32 @@ return {
                 -- lua
                 "lua-language-server",
                 "stylua",
-
                 -- python
                 "pyright",
                 "black",
-
                 -- elm
                 "elm-language-server",
-
                 -- bash
                 "beautysh",
                 "bash-language-server",
-
                 -- clojure
                 "clojure-lsp",
-
+                -- json
                 "json-lsp",
+                -- ocaml
                 "ocaml-lsp",
+                "ocamlformat",
+                -- rust
                 "rust-analyzer",
+                -- C
                 "clangd",
+                -- docker
                 "docker-compose-language-service",
                 "dockerfile-language-server",
+                -- csharp/fsharp
                 "omnisharp",
+                "fsautocomplete",
+                "fantomas"
             },
         },
         config = function(_, opts)
@@ -150,4 +154,5 @@ return {
             }
         end,
     },
+    { "adelarsq/neofsharp.vim" }
 }

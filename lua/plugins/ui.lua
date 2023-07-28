@@ -128,34 +128,6 @@ return {
 			end,
 		},
 	},
-	-- {
-	-- 	"fgheng/winbar.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-tree/nvim-web-devicons",
-	-- 	},
-	-- 	config = true,
-	-- 	opts = {
-	-- 		enabled = true,
-	-- 		show_file_path = true,
-	-- 		show_symbols = true,
-	--
-	-- 		exclude_filetype = {
-	-- 			"help",
-	-- 			"startify",
-	-- 			"dashboard",
-	-- 			"packer",
-	-- 			"neogitstatus",
-	-- 			"NvimTree",
-	-- 			"Trouble",
-	-- 			"alpha",
-	-- 			"lir",
-	-- 			"Outline",
-	-- 			"spectre_panel",
-	-- 			"toggleterm",
-	-- 			"qf",
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"SmiteshP/nvim-navic",
 		lazy = true,
@@ -168,4 +140,9 @@ return {
 			}
 		end,
 	},
+    {
+        "karb94/neoscroll.nvim",
+        event = "VeryLazy",
+        opts = {},
+    }
 }
