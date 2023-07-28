@@ -154,5 +154,9 @@ return {
             }
         end,
     },
-    { "adelarsq/neofsharp.vim" }
+    {
+        "adelarsq/neofsharp.vim",
+        -- only load on fsharp file types
+        ft = { "fs", "fsx" }
+    }
 }
