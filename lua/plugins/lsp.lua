@@ -60,7 +60,7 @@ return {
 				require("cmp_nvim_lsp").default_capabilities()
 			)
 
-			local lsp_attach = function(client, bufnr)
+			local on_attach = function(client, bufnr)
 				if client.server_capabilities.documentSymbolProvider then
 					navic.attach(client, bufnr)
 				end
@@ -70,7 +70,7 @@ return {
 			mason_lsp_config.setup_handlers({
 				function(server_name)
 					lspconfig[server_name].setup({
-						on_attach = lsp_attach,
+						on_attach = on_attach,
 						capabilities = lsp_capabilities,
 						settings = opts.servers[server_name] and opts.servers[server_name].settings or {},
 						handlers = handlers,

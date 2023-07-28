@@ -1,6 +1,14 @@
 local M = {}
+local function winbar()
+	local path = string.sub(string.gsub(vim.api.nvim_buf_get_name(0), "/", " > "), 3)
+	local navic = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    -- todo remove colon no navic
+	return path .. ": " .. navic
+end
+
 local opt = vim.opt
 M.set_options = function()
+	opt.encoding = "UTF-8"
 	opt.autowrite = true -- Enable auto write
 	opt.background = "dark"
 	opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -43,6 +51,7 @@ M.set_options = function()
 	opt.wildmode = "longest:full,full" -- Command-line completion mode
 	opt.winminwidth = 5 -- Minimum window width
 	opt.wrap = false -- Disable line wrap
+	opt.winbar = winbar()
 
 	if vim.fn.has("nvim-0.9.0") == 1 then
 		opt.splitkeep = "screen"
