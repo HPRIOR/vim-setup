@@ -6,6 +6,7 @@ local function winbar()
 	return path .. ": " .. navic
 end
 
+
 local opt = vim.opt
 M.set_options = function()
 	opt.encoding = "UTF-8"

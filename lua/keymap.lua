@@ -47,8 +47,14 @@ M.bind_telescope = function()
 		-- diagnostics for all buffers
 		{
 			"<leader>xa",
-			"<cmd>lua require'telescope.builtin'.diagnostics()<cr>", -- todo change severity 
+			"<cmd>lua require'telescope.builtin'.diagnostics()<cr>", -- todo change severity
 			desc = "Diagnostics",
+		},
+		-- document symbols
+		{
+			"<leader>s",
+			"<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>",
+			desc = "Workspace symbols",
 		},
 	}
 end
@@ -79,10 +85,17 @@ local function clipboard()
 	vmap("<C-p>", "y'>p")
 end
 
+M.bind_format = function(client)
+	if client.server_capabilities.documentFormattingProvider then
+		nmap("gf", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
+	else
+		nmap("gf", ":Format<cr>")
+	end
+end
+
 M.bind_keys = function()
 	window_management()
 	clipboard()
-	nmap("gf", ":Format<cr>")
 end
 
 return M
