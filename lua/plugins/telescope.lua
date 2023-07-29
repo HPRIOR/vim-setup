@@ -21,10 +21,10 @@ return {
 				theme = "dropdown",
 			},
 			lsp_definitions = {
-				theme = "cursor",
+				theme = "ivy",
 			},
 			lsp_references = {
-				theme = "cursor",
+				theme = "ivy",
 			},
 			diagnostics = {
 				theme = "ivy",
