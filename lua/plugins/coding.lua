@@ -1,3 +1,4 @@
+local keymap = require("keymap")
 return {
     -- snippets
     {
@@ -81,7 +82,7 @@ return {
                     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 }),
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp" }, 
+                    { name = "nvim_lsp" },
                     { name = "luasnip" },
                     -- { name = "buffer" },
                     { name = "path" },
@@ -171,6 +172,12 @@ return {
                         or vim.bo.commentstring
                 end,
             },
+        },
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
         },
     },
 }
