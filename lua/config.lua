@@ -26,7 +26,7 @@ function M.icons()
 			Event = " ",
 			Field = " ",
 			File = " ",
-			Folder = " ",
+                Folder = " ",
 			Function = " ",
 			Interface = " ",
 			Key = " ",

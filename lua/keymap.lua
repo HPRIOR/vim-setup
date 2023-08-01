@@ -13,6 +13,36 @@ local function vmap(shortcut, command)
     map("v", shortcut, command)
 end
 
+
+M.bind_keys_general = function()
+    -- clipboard copy visual selection below
+    vmap("<C-p>", "y'>p")
+    -- default mapping for formatting
+    nmap("gf", ":Format<cr>")
+    -- LazyGit integration
+    nmap("<leader>vg", ":LazyGit<CR>")
+    -- spell checking
+    nmap("<C-s>", ":setlocal spell! spelllang=en_gb<CR>")
+    -- GPT
+    nmap("<leader>c", ":ChatGPT<CR>")
+    -- Rust
+    nmap("<leader>vr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>")
+    -- ZenMode
+    nmap("<leader>z", ":ZenMode<CR>")
+    -- Window window management
+    nmap("<leader>h", "<c-w>h")
+    nmap("<leader>l", "<c-w>l")
+    nmap("<leader>k", "<c-w>k")
+    nmap("<leader>j", "<c-w>j")
+    nmap("<leader>q", ":quit <CR>")
+    nmap("=", ":vertical resize +5<CR>")
+    nmap("-", ":vertical resize -5<CR>")
+    nmap("+", ":resize +5<CR>")
+    nmap("_", ":resize -5<CR>")
+    nmap("<leader>=", "<c-w>=")
+    -- exit window
+end
+
 -- called in lua/telescope.lua
 M.bind_telescope = function()
     return {
@@ -53,14 +83,32 @@ M.bind_telescope = function()
         {
             "<leader>s",
             "<cmd>lua require'telescope.builtin'.spell_suggest(require('telescope.themes').get_dropdown({ width = 0.8, previewer = false, prompt_title = false }))<cr>",
-            desc = "Workspace symbols",
+            desc = "Spell check",
         },
     }
 end
 
+M.bind_cmp = function()
+    local cmp = require('cmp')
+    return {
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<S-CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }
+end
+
+
 -- called in lua/lsp.lua
 -- bound to all lsp
-M.bind_lsp = function(bufnr)
+M.bind_lsp = function(_, bufnr)
     local key_opts = { buffer = bufnr, remap = false }
     vim.keymap.set("n", "K", vim.lsp.buf.hover, key_opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, key_opts)
@@ -71,18 +119,6 @@ M.bind_lsp = function(bufnr)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, key_opts)
 end
 
--- general mappings
-local function window_management()
-    nmap("<leader>h", "<c-w>h")
-    nmap("<leader>l", "<c-w>l")
-    nmap("<leader>k", "<c-w>k")
-    nmap("<leader>j", "<c-w>j")
-    nmap("<leader>q", ":q<CR>")
-end
-
-local function clipboard()
-    vmap("<C-p>", "y'>p")
-end
 
 M.bind_format = function(client)
     if client.server_capabilities.documentFormattingProvider then
@@ -92,15 +128,5 @@ M.bind_format = function(client)
     end
 end
 
-M.bind_keys = function()
-    -- default mapping for formatting
-    nmap("gf", ":Format<cr>")
-    nmap("<leader>lg", ":LazyGit<CR>")
-    nmap("<C-s>", ":setlocal spell! spelllang=en_gb<CR>")
-    nmap("<leader>c", ":ChatGPT<CR>")
-    nmap("<leader>vr", "lua require('rust-tools').runnables.runnables()<CR>")
-    window_management()
-    clipboard()
-end
 
 return M

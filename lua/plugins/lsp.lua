@@ -1,6 +1,8 @@
 local keymap = require("keymap")
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+
 return {
     {
         "neovim/nvim-lspconfig",
@@ -57,7 +59,6 @@ return {
             -- for winbar lsp help
             local navic = require("nvim-navic")
 
-
             local handlers = {
                 ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.hover),
                 ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.signature_help),
@@ -77,12 +78,16 @@ return {
                 end
                 -- autopairs  for method calls added here so it can be customised for different lsps
                 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
-                keymap.bind_lsp(bufnr)
+                keymap.bind_lsp(client, bufnr)
                 keymap.bind_format(client)
             end
 
             mason_lsp_config.setup_handlers({
                 function(server_name)
+                    if (server_name == "rust_analyzer") then
+                        require('rust-tools').setup({ server = { on_attach = on_attach_all } })
+                    end
+
                     lspconfig[server_name].setup({
                         on_attach = on_attach_all,
                         capabilities = lsp_capabilities,
