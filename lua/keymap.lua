@@ -34,13 +34,11 @@ M.bind_keys_general = function()
     nmap("<leader>l", "<c-w>l")
     nmap("<leader>k", "<c-w>k")
     nmap("<leader>j", "<c-w>j")
-    nmap("<leader>q", ":quit <CR>")
     nmap("=", ":vertical resize +5<CR>")
     nmap("-", ":vertical resize -5<CR>")
     nmap("+", ":resize +5<CR>")
     nmap("_", ":resize -5<CR>")
     nmap("<leader>=", "<c-w>=")
-    -- exit window
 end
 
 -- called in lua/telescope.lua
