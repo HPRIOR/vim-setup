@@ -10,7 +10,14 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         opts = {
+            hover = {
+                border = "rounded"
+            },
+            signature_help = {
+                border = "rounded"
+            },
             diagnostics = {
+                virtual_text = false,
                 underline = true,
                 update_in_insert = false,
                 severity_sort = true,
@@ -50,9 +57,11 @@ return {
             -- for winbar lsp help
             local navic = require("nvim-navic")
 
+
             local handlers = {
-                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.hover),
+                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.signature_help),
+                ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, opts.diagnostics)
             }
 
             local lsp_capabilities = vim.tbl_deep_extend(
@@ -63,14 +72,13 @@ return {
             )
 
             local on_attach_all = function(client, bufnr)
-                keymap.bind_format(client)
-
                 if client.server_capabilities.documentSymbolProvider then
                     navic.attach(client, bufnr)
                 end
                 -- autopairs  for method calls added here so it can be customised for different lsps
                 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
                 keymap.bind_lsp(bufnr)
+                keymap.bind_format(client)
             end
 
             mason_lsp_config.setup_handlers({

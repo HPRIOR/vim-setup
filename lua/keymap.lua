@@ -22,6 +22,7 @@ M.bind_telescope = function()
         { "<leader>'", "<cmd>Telescope marks<cr>",                         desc = "Jump to Mark" },
         { "<leader>f", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
         { "<leader>g", "<cmd>Telescope live_grep<cr>",                     desc = "Live grep" },
+        { "<leader>n", "<cmd>Telescope notify<cr>",                        desc = "Live grep" },
         {
             "<leader>b",
             "<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown({ width = 0.8, previewer = false, prompt_title = false }))<cr>",
@@ -49,10 +50,9 @@ M.bind_telescope = function()
             "<cmd>lua require'telescope.builtin'.diagnostics()<cr>", -- todo change severity
             desc = "Diagnostics",
         },
-        -- document symbols
         {
             "<leader>s",
-            "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>",
+            "<cmd>lua require'telescope.builtin'.spell_suggest(require('telescope.themes').get_dropdown({ width = 0.8, previewer = false, prompt_title = false }))<cr>",
             desc = "Workspace symbols",
         },
     }
@@ -96,6 +96,9 @@ M.bind_keys = function()
     -- default mapping for formatting
     nmap("gf", ":Format<cr>")
     nmap("<leader>lg", ":LazyGit<CR>")
+    nmap("<C-s>", ":setlocal spell! spelllang=en_gb<CR>")
+    nmap("<leader>c", ":ChatGPT<CR>")
+    nmap("<leader>vr", "lua require('rust-tools').runnables.runnables()<CR>")
     window_management()
     clipboard()
 end

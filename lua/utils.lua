@@ -15,6 +15,7 @@ function M.table_to_string(t, delimiter)
     return result
 end
 
+
 function M.lsp_client_strs()
     local clients = vim.lsp.buf_get_clients()
     local clients_list = {}

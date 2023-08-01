@@ -5,8 +5,6 @@ local function winbar()
     return "%{v:lua.string.gsub(expand('%'), '/', ' > ')} " .. navic
 end
 
-
-
 local opt = vim.opt
 M.set_options = function()
     opt.encoding = "UTF-8"
