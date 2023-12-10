@@ -38,8 +38,8 @@ M.bind_keys_general = function()
     nmap("+", ":resize +5<CR>")
     nmap("_", ":resize -5<CR>")
     nmap("<leader>=", "<c-w>=")
-    vmap("<C-a>", "<cmd>lua Chat_gpt_run()<cr>")
-    nmap("<C-a>", "<cmd>lua Chat_gpt_run()<cr>")
+    vmap("<C-a>", "<cmd>Telescope gpt<cr>")
+    nmap("<C-a>", "<cmd>Telescope gpt<cr>")
 end
 
 -- called in lua/telescope.lua
