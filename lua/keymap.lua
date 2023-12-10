@@ -24,11 +24,10 @@ M.bind_keys_general = function()
     -- spell checking
     nmap("<C-s>", ":setlocal spell! spelllang=en_gb<CR>")
     -- GPT
-    nmap("<leader>c", ":ChatGPT<CR>")
+    nmap("<C-c>", ":ChatGPT<CR>")
+    vmap("<C-c>", ":ChatGPT<CR>")
     -- Rust
     nmap("<leader>vr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>")
-    -- ZenMode
-    nmap("<leader>z", ":ZenMode<CR>")
     -- Window window management
     nmap("<leader>h", "<c-w>h")
     nmap("<leader>l", "<c-w>l")
@@ -39,6 +38,8 @@ M.bind_keys_general = function()
     nmap("+", ":resize +5<CR>")
     nmap("_", ":resize -5<CR>")
     nmap("<leader>=", "<c-w>=")
+    vmap("<C-a>", "<cmd>lua Chat_gpt_run()<cr>")
+    nmap("<C-a>", "<cmd>lua Chat_gpt_run()<cr>")
 end
 
 -- called in lua/telescope.lua
@@ -47,10 +48,12 @@ M.bind_telescope = function()
         { "<leader>:", "<cmd>Telescope command_history<cr>",               desc = "Command history" },
         { "<leader>;", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
         { "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Buffer" },
+        -- todo: jump history instead?
         { "<leader>'", "<cmd>Telescope marks<cr>",                         desc = "Jump to Mark" },
         { "<leader>f", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
         { "<leader>g", "<cmd>Telescope live_grep<cr>",                     desc = "Live grep" },
         { "<leader>n", "<cmd>Telescope notify<cr>",                        desc = "Live grep" },
+
         {
             "<leader>b",
             "<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown({ width = 0.8, previewer = false, prompt_title = false }))<cr>",
@@ -86,6 +89,7 @@ M.bind_telescope = function()
     }
 end
 
+-- todo not sure about this really
 M.bind_cmp = function()
     local cmp = require('cmp')
     return {
@@ -95,11 +99,11 @@ M.bind_cmp = function()
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<S-CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        }),             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }
 end
 

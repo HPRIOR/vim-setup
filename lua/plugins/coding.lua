@@ -179,7 +179,12 @@ return {
         "jackMort/ChatGPT.nvim",
         event = "VeryLazy",
         config = function()
-            require("chatgpt").setup()
+            require("chatgpt").setup({
+                openai_params = {
+                    model = "gpt-4-1106-preview"
+                },
+                yank_register = "unnamedplus",
+            })
         end,
         dependencies = {
             "MunifTanjim/nui.nvim",
@@ -196,25 +201,10 @@ return {
         },
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    {
-        "folke/zen-mode.nvim",
-        event = "VeryLazy",
-        opts = {
-            window = {
-                width = 1
-            }
-        }
-    },
     -- Git
     {
         "tpope/vim-fugitive",
         event = "VeryLazy",
-        opts = {}
+        config = function() end
     },
-    {
-        -- "wesQ3/vim-windowswap", -- todo emulate window snap functionality in lua - create aplugin
-        -- event = "VeryLazy",
-        -- config = function () end
-    }
-
 }

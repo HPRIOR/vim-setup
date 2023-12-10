@@ -62,7 +62,8 @@ return {
             local handlers = {
                 ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.hover),
                 ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.signature_help),
-                ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, opts.diagnostics)
+                ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+                    opts.diagnostics)
             }
 
             local lsp_capabilities = vim.tbl_deep_extend(
@@ -81,6 +82,13 @@ return {
                 keymap.bind_lsp(client, bufnr)
                 keymap.bind_format(client)
             end
+
+            lspconfig.ocamllsp.setup {
+                on_attach = on_attach_all,
+                capabilities = lsp_capabilities,
+                settings = {},
+                handlers = handlers,
+            }
 
             mason_lsp_config.setup_handlers({
                 function(server_name)
@@ -120,8 +128,9 @@ return {
                 -- json
                 "json-lsp",
                 -- ocaml
-                "ocaml-lsp",
-                "ocamlformat",
+                -- I think these need to be managed by opam or you get odd behaviour
+                -- "ocaml-lsp",
+                -- "ocamlformat",
                 -- rust
                 "rust-analyzer",
                 -- C
