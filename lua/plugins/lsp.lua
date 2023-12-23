@@ -90,6 +90,14 @@ return {
                 handlers = handlers,
             }
 
+            lspconfig.wgsl_analyzer.setup {
+                on_attach = on_attach_all,
+                capabilities = lsp_capabilities,
+                settings = {},
+                handlers = handlers,
+            }
+
+
             mason_lsp_config.setup_handlers({
                 function(server_name)
                     if (server_name == "rust_analyzer") then

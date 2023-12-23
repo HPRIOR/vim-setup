@@ -40,7 +40,9 @@ M.bind_keys_general = function()
     nmap("<leader>=", "<c-w>=")
     vmap("<C-a>", "<cmd>Telescope gpt<cr>")
     nmap("<C-a>", "<cmd>Telescope gpt<cr>")
+
 end
+
 
 -- called in lua/telescope.lua
 M.bind_telescope = function()

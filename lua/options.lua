@@ -64,6 +64,14 @@ M.set_options = function()
         float = { border = "rounded" },
     })
     vim.notify = require("notify")
+
+    -- setup wgsl files in lsp
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+        pattern = "*.wgsl",
+        callback = function()
+            vim.bo.filetype = "wgsl"
+        end,
+    })
 end
 
 return M
