@@ -40,7 +40,6 @@ M.bind_keys_general = function()
     nmap("<leader>=", "<c-w>=")
     vmap("<C-a>", "<cmd>Telescope gpt<cr>")
     nmap("<C-a>", "<cmd>Telescope gpt<cr>")
-
 end
 
 
@@ -55,6 +54,11 @@ M.bind_telescope = function()
         { "<leader>f", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
         { "<leader>g", "<cmd>Telescope live_grep<cr>",                     desc = "Live grep" },
         { "<leader>n", "<cmd>Telescope notify<cr>",                        desc = "Live grep" },
+        {
+            "<leader>z",
+            "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>",
+            desc = "Lsp symbols"
+        },
 
         {
             "<leader>b",
