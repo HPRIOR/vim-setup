@@ -150,7 +150,7 @@ return {
                 "omnisharp",
                 "fsautocomplete",
                 "fantomas",
-                "html=lsp",
+                "html-lsp",
                 "css-lsp",
                 "typescript-language-server",
                 "tailwindcss-language-server"
