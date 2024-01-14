@@ -149,7 +149,12 @@ return {
                 -- csharp/fsharp
                 "omnisharp",
                 "fsautocomplete",
-                "fantomas"
+                "fantomas",
+                "html=lsp",
+                "css-lsp",
+                "typescript-language-server",
+                "tailwindcss-language-server"
+
             },
         },
         config = function(_, opts)
